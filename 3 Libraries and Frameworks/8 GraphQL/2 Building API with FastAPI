@@ -1,0 +1,50 @@
+You'll need FastAPI, Strawberry, and Uvicorn:
+```
+pip install fastapi strawberry-graphql uvicorn
+```
+
+Strawberry
+----------
+Python library for building GraphQL APIs in a simple and type-safe way using Python’s type hints.
+It provides an easy-to-use and fully compatible GraphQL implementation that integrates well with FastAPI, Django,
+and other Python web frameworks.
+
+Asynchronous Support: Works well with async and await, making it great for modern applications.
+Extensibility: Supports custom scalars (Primitive types like String, ...), middleware, and integration with ORMs like SQLAlchemy.
+
+Uvicorn
+-------
+High-performance ASGI (Asynchronous Server Gateway Interface) web server for running Python web applications,
+particularly FastAPI and Starlette.
+
+Blazing Fast: Built on uvloop (a high-performance event loop) and httptools (a fast HTTP parser).
+Supports WebSockets, HTTP/2, and background tasks.
+Hot Reload & Auto-restart
+
+
+Run
+```
+uvicorn 2_building_api_with_fastapi:app --reload
+```
+
+Visit
+http://127.0.0.1:8000/graphql
+
+Experiment
+```
+{
+  books {
+    title
+    author
+  }
+}
+```
+
+```
+mutation {
+  addBook(title: "Dune", author: "Frank Herbert") {
+    title
+    author
+  }
+}
+```

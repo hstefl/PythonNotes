@@ -1,0 +1,23 @@
+# Pytest
+# A powerful and flexible framework that can run unittest and doctest tests as well.
+# Provides a rich plugin architecture and easy-to-use features.
+# Supports fixtures, parameterized testing, and custom markers.
+#
+# Unittest
+# Built into the standard library, unittest is inspired by JUnit from the Java world.
+# Provides a test case base class and various assert methods.
+# Supports test discovery, fixtures, and test suites.
+#
+# Doctest
+# Allows you to test your code by running examples embedded in the documentation and verifying that they
+# produce the expected results.
+# Ideal for testing small pieces of code and for ensuring that documentation remains accurate.
+#
+# Summary
+# unittest: Use if you prefer something built into the standard library or are coming from a Java background.
+# pytest: Use if you want a powerful, easy-to-use framework with lots of plugins and community support.
+# nose2: Use if you want to extend unittest with additional features and plugins.
+# doctest: Use if you want to ensure your documentation examples are accurate.
+# Hypothesis: Use if you want to improve test coverage with property-based testing.
+# behave: Use if you are practicing BDD and want to write tests in natural language.
+

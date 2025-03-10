@@ -1,0 +1,126 @@
+There are three different types of PEPs:
+ * Standards Track PEPs, which describe new language features and implementations;
+ * Informational PEPs, which describe Python design issues, as well as provide guidelines and
+   information to the Python community;
+ * Process PEPs, which describe various processes that revolve around Python
+   (e.g., propose changes, provide recommendations, specify certain procedures).
+
+
+PEP-20 - The Zen of Python, by Tim Peters
+-----------------------------------------
+import this
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+
+
+PEP 8 - coding conventions
+--------------------------
+pycodestyle - style guide checker
+autopep8 - automatically format your Python code to conform to the PEP 8 guidelines
+PEP 8 online is an online PEP 8 checker
+
+Indentation
+  * Use four spaces per indentation level, and;
+  * Use spaces rather than tabs.
+  * Mixing tabs and spaces for indentation is not allowed in Python 3
+
+Continuation lines - https://edube.org/learn/pcpp1-python-enhancement-proposals-peps/pep-8-code-layout-1
+ * Continuation lines are allowed if using parentheses/brackets/braces:
+
+Maximum Line Length and Line Breaks
+ * limit all lines to a maximum of 79 characters
+
+Line breaks and operators
+ * break before binary operators
+
+Blank Lines
+ * two blank lines to surround top-level function and class definitions:
+ * a single blank line to surround method definitions inside a class
+ * blank lines in functions in order to indicate logical sections (sparingly).
+
+Default encodings
+ * It is recommended that you use Python’s default encodings (Python 3 -- UTF-8, Python 2 -- ASCII).
+ * all identifiers in the Python standard library MUST use ASCII-only identifiers, and SHOULD use English words whenever feasible"
+
+Imports
+ * put imports at the beginning of your script
+ * between module comments/docstrings and module globals and constants, respecting order:
+    Standard library imports;
+    Related third-party imports;
+    Local application/library specific imports.
+ * imports be on separate lines
+ * If possible, use absolute imports
+ * avoid using wildcard imports, f
+
+String quotes
+ * avoid using backslash in a strings
+
+Whitespace in expressions and statements
+ * Avoid using too much whitespace, as it makes your code difficult to follow.
+ * for example, do not use excessive whitespace immediately inside parentheses/brackets/braces, or immediately before a comma/semicolon/colon
+
+Trailing commas - https://edube.org/learn/pcpp1-python-enhancement-proposals-peps/pep-8-string-quotes-whitespace-and-trailing-commas-1
+ * do not use excessive whitespace
+
+Recommendations for using comments
+ * Write comments as complete sentences (capitalize the first word if it’s not an identifier, and end your sentence with a full stop).
+ * Comments should consist of no more than 72 characters per line (but you know that already).
+
+Block comments
+ * To explain sections of code rather than particular lines.
+ * Should refer to the code that follows them;
+ * Should be indented to the same level as the code they describe.
+
+Inline comments
+ * written on the same line as your statements.
+ * They should address or provide further explanation to a single line of code or a single statement.
+
+Documentation strings (PEP 257)
+ * provide descriptions and explanations for all public modules, files, functions, classes, and methods you use in your code
+
+Naming conventions – recommendations - https://edube.org/learn/pcpp1-python-enhancement-proposals-peps/pep-8-naming-conventions-1
+ * class - MySampleClass
+ * method - my_class_method
+    self
+    cls
+ * constant - MY_CONSTANT
+ * module - samples.py, my_samples.
+ * package - mypackage
+ * Type variable - AnyStr
+
+Programming recommendations
+ * make comparisons to the None object with the use of is or is not, not with the (in)equality operators (== and !=),
+ * do not use the (in)equality operators when comparing Boolean values to True or False. Again, use is or is not instead
+   or without operator at all
+ * or readability purposes, use the is not operator instead of not … is
+
+
+Docstring Conventions - PEP 257
+--------------------------------
+ * A docstring is "a string literal that occurs as the first statement in a module, function, class, or method definition.
+   Such a docstring becomes the __doc__ special attribute of that object."
+ * The main purpose of docstrings is documenting your code – describing its use, functionality, and capabilities to
+   users who do not necessarily need to know how it works.
+
+ * script docstrings (in the sense of stand-alone programs/single file executables) should document the script's function, command line syntax, environment variables, and files. The description should be balanced in a way that it helps new users understand the script's usage, as well as provide a quick reference to all the program's features for the more experienced user;
+ * module docstrings should list the classes, exceptions, and functions exported by the module;
+ * package docstrings (understood as the docstring of the package's __init__.py module) should list the modules and subpackages exported by the package;
+ * docstrings for functions and class methods should summarize their behavior and provide information about the arguments (including optional arguments), values, exceptions, restrictions, etc.
+ * class docstrings should also summarize its behavior as well as document the public methods and instance variable

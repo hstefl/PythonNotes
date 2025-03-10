@@ -1,0 +1,12 @@
+# Selenium is a powerful tool for automating web browsers. It can be used for web scraping, testing web applications,
+# and automating repetitive web tasks. Below is a basic guide on how to use Selenium in Python:
+#
+# Install
+# pip install selenium
+#
+# Download Webdriver
+# Selenium requires a WebDriver to interact with the web browser. Each browser has its own WebDriver:
+#     Chrome: ChromeDriver
+#     Firefox: GeckoDriver
+#     Edge: EdgeDriver
+#

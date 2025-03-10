@@ -1,0 +1,142 @@
+Setting Up Pytest for GraphQL Testing
+```
+pip install pytest pytest-asyncio pytest-snapshot requests-mock
+```
+
+Writing Unit Tests with Pytest
+------------------------------
+```
+import pytest
+import httpx
+
+GRAPHQL_URL = "https://example.com/graphql"
+
+@pytest.mark.asyncio
+async def test_graphql_query():
+    query = """
+    query {
+        user(id: "1") {
+            id
+            name
+            email
+        }
+    }
+    """
+    async with httpx.AsyncClient() as client:
+        response = await client.post(GRAPHQL_URL, json={"query": query})
+
+    assert response.status_code == 200
+    data = response.json()
+    assert "data" in data
+    assert data["data"]["user"]["id"] == "1"
+
+```
+
+Using GraphQL Query Snapshots
+------------------------------
+How Snapshot Testing Works
+First Test Run:
+ * The test runs for the first time.
+ * The response JSON is saved as a snapshot (a file).
+ * If the snapshot does not exist, pytest-snapshot creates it.
+
+Subsequent Test Runs:
+ * The test runs again.
+ * The new API response is compared against the saved snapshot.
+ * If the response matches, the test passes.
+ * If the response differs, the test fails (indicating an unexpected API change).
+
+```
+pip install pytest-snapshot
+```
+```
+def test_graphql_query_snapshot(snapshot):
+    query = """
+    query {
+        user(id: "1") {
+            id
+            name
+            email
+        }
+    }
+    """
+    response = {
+        "data": {
+            "user": {
+                "id": "1",
+                "name": "John Doe",
+                "email": "john@example.com"
+            }
+        }
+    }
+
+    # Compare the response against the stored snapshot
+    snapshot.assert_match(response)
+```
+
+Mocking API Responses
+---------------------
+
+Example: Mocking API Calls Using requests-mock
+```
+import requests
+import requests_mock
+
+def test_mocked_graphql_query():
+    query = """
+    query {
+        user(id: "1") {
+            id
+            name
+            email
+        }
+    }
+    """
+    mock_response = {
+        "data": {
+            "user": {
+                "id": "1",
+                "name": "Mock User",
+                "email": "mock@example.com"
+            }
+        }
+    }
+
+    with requests_mock.Mocker() as m:
+        m.post("https://example.com/graphql", json=mock_response)
+        response = requests.post("https://example.com/graphql", json={"query": query})
+
+    assert response.status_code == 200
+    assert response.json() == mock_response
+```
+
+Example: Mocking with unittest.mock
+```
+from unittest.mock import patch
+
+@patch("httpx.post")
+def test_mock_graphql_api(mock_post):
+    query = """
+    query {
+        user(id: "1") {
+            id
+            name
+            email
+        }
+    }
+    """
+    mock_post.return_value.status_code = 200
+    mock_post.return_value.json.return_value = {
+        "data": {
+            "user": {
+                "id": "1",
+                "name": "Mocked User",
+                "email": "mocked@example.com"
+            }
+        }
+    }
+
+    response = httpx.post(GRAPHQL_URL, json={"query": query})
+    assert response.status_code == 200
+    assert response.json()["data"]["user"]["name"] == "Mocked User"
+```

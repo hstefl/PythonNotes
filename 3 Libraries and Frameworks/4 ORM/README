@@ -1,0 +1,56 @@
+Object-Relational Mapping (ORM) in Python is a programming technique used to convert data between incompatible type
+systems in object-oriented programming languages. In the context of Python, ORM allows developers to interact with
+a database using Python objects instead of writing raw SQL queries. This abstraction layer simplifies database
+operations and makes the code more readable and maintainable.
+
+Key Concepts of ORM
+-------------------
+Model Classes:
+ * Each table in the database is represented by a class in Python.
+ * Attributes of the class correspond to columns in the table.
+ * Instances of the class correspond to rows in the table.
+
+Querying:
+ * ORM libraries provide methods to perform CRUD (Create, Read, Update, Delete) operations.
+ * Queries are constructed using Python syntax instead of SQL.
+
+Relationships:
+ * ORM allows defining relationships between tables (e.g., one-to-many, many-to-many) using class attributes.
+
+Migrations:
+ * Some ORM frameworks include tools to manage database schema changes over time, known as migrations.
+
+
+Popular Python ORM Libraries
+----------------------------
+SQLAlchemy:
+ * One of the most powerful and widely used ORM libraries in Python.
+ * Provides both high-level ORM capabilities and low-level database interaction.
+
+Django ORM:
+ * Comes built-in with the Django web framework.
+ * Highly integrated with Django's other features, such as form handling and view templates.
+
+Peewee:
+ * A small, expressive ORM.
+ * Simple to use and good for small applications.
+
+Benefits of Using ORM
+---------------------
+Productivity: Speeds up development by allowing developers to work with higher-level abstractions.
+Maintainability: Makes the code easier to understand and maintain.
+Portability: Makes it easier to switch between different database systems.
+
+Potential Drawbacks
+---------------------
+Performance: May not be as performant as writing raw SQL, especially for complex queries.
+Abstraction Leakage: Some complex database features might be difficult to use through the ORM.
+
+Using ORM in Python can significantly streamline the process of database interaction, making it more intuitive and
+aligned with the principles of object-oriented programming.
+
+
+
+
+
+

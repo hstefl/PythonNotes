@@ -1,0 +1,67 @@
+GraphQL schemas define the shape of the data that clients can request. The schema consists of:
+ * ObjectTypes: Represent entities with fields.
+ * Scalars: Primitive types like String, Int, Boolean, etc.
+ * Enums: A predefined set of values.
+ * Interfaces: Abstract types that multiple ObjectTypes can implement.
+ * Unions: A type that can return multiple different ObjectTypes.
+
+Defining Types (ObjectTypes, Scalars, Enums, Interfaces, Unions)
+
+ObjectTypes
+An ObjectType defines the structure of the data.
+```
+import strawberry
+
+@strawberry.type
+class Book:
+    title: str
+    author: str
+    published_year: int
+```
+
+Scalars
+Scalars represent basic data types. Strawberry supports int, str, float, bool, etc.
+```
+@strawberry.scalar
+class CustomScalar:
+    description = "Custom scalar example"
+
+    @staticmethod
+    def serialize(value):
+        return str(value)
+```
+
+Enums
+Enums allow defining a set of possible values.
+```
+@strawberry.enum
+class Genre:
+    FICTION = "Fiction"
+    NONFICTION = "Non-Fiction"
+    MYSTERY = "Mystery"
+```
+
+Interfaces
+Interfaces allow different types to share common fields.
+```
+@strawberry.interface
+class Media:
+    title: str
+
+@strawberry.type
+class Book(Media):
+    author: str
+
+@strawberry.type
+class Movie(Media):
+    director: str
+```
+
+Unions
+A Union allows a field to return multiple ObjectTypes.
+```
+@strawberry.union
+class SearchResult:
+    Book | Movie
+```
+

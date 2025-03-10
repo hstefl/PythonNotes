@@ -1,0 +1,112 @@
+Overview
+========
+GraphQL is a query language for APIs and a runtime for executing those queries against your data.
+It was developed by Facebook in 2012 and open-sourced in 2015.
+Unliky on fixed endpoints and re traditional REST APIs, which religid response structures,
+GraphQL provides a more flexible approach where clients can request only the data they need.
+
+GraphQL is a declarative data-fetching language and execution engine that allows clients to specify
+exactly what data they need. Instead of multiple endpoints returning fixed data structures,
+GraphQL exposes a single endpoint, and the client defines the shape of the response.
+
+Key Features of GraphQL:
+ * Single Endpoint: Unlike REST, GraphQL uses a single /graphql endpoint for all operations.
+ * Strongly Typed Schema: GraphQL defines a schema that specifies the types of data available and their relationships.
+ * Self-Documenting: The schema acts as documentation, making it easier to explore available queries.
+ * Client-Driven Queries: Clients dictate the structure (fields) of the response, reducing over-fetching and under-fetching of data.
+ * Real-Time Data Fetching: Supports real-time updates through subscriptions.
+ * Supports Aggregated Data Requests: Fetches related data in a single request, improving performance.
+ * No Need for API Versioning: Clients can request specific fields, making backward compatibility easier.
+
+Other facts
+ * Uses a single POST request with queries/mutations (unlike REST - POST, GET, ...)
+ * Response format is always JSON with a predictable schema
+
+Use Cases
+ * Mobile Applications: Reduces data payload, making it ideal for low-bandwidth networks.
+ * Microservices Communication: Aggregates data from multiple microservices efficiently.
+ * Real-Time Applications: Suitable for chat applications, live notifications, and stock market updates.
+ * Content Management Systems (CMS): Provides flexible data retrieval for frontend developers.
+ * E-commerce Platforms: Allows efficient querying of product listings, filters, and user preferences.
+
+Architecture and Key Concepts
+=============================
+GraphQL operates based on a schema-centric model that defines how data can be queried, manipulated, and subscribed to.
+
+1. Queries (Fetching Data)
+--------------------------
+Queries are used to retrieve data from the GraphQL server. They are similar to GET requests in REST but more flexible.
+
+Example Query:
+```
+query {
+  user(id: 1) {
+    id
+    name
+    email
+  }
+}
+```
+
+Response:
+```
+{
+  "data": {
+    "user": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com"
+    }
+  }
+}
+```
+
+2. Mutations (Modifying Data)
+-----------------------------
+Mutations are used to create, update, or delete data, similar to POST, PUT, DELETE in REST.
+
+Request:
+```
+mutation {
+  createUser(name: "Jane Doe", email: "jane@example.com") {
+    id
+    name
+    email
+  }
+}
+```
+
+Response:
+```
+{
+  "data": {
+    "createUser": {
+      "id": 2,
+      "name": "Jane Doe",
+      "email": "jane@example.com"
+    }
+  }
+}
+```
+
+3. Subscriptions (Real-Time Updates)
+------------------------------------
+Subscriptions allow clients to listen for real-time up
+
+This would keep the client updated whenever a new message is sent:
+```
+subscription {
+  newMessage {
+    id
+    text
+    sender
+  }
+}
+```
+
+4. Resolvers (Data Handlers)
+----------------------------
+Resolvers are functions that handle queries, mutations, and subscriptions
+by fetching data from a database or external APIs.
+
+For example ses next chapter.
