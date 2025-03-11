@@ -1,0 +1,61 @@
+Explicit Typing in Python
+-------------------------
+Python is dynamically typed, meaning you don’t need to explicitly declare types for variables. However, with the
+introduction of type hints (type annotations) in Python 3.5, developers can specify explicit types for variables,
+function arguments, and return values. This improves readability, maintainability, and helps with static analysis
+tools like mypy.
+
+How Explicit Typing Works
+-------------------------
+Explicit typing in Python is done using type hints. The syntax involves using a colon (:) followed by the expected type.
+
+Examples of Explicit Typing
+---------------------------
+1. Variables
+```
+x: int = 10
+y: float = 3.14
+name: str = "Python"
+is_valid: bool = True
+```
+
+2. Function Arguments and Return Types
+```
+def add_numbers(a: int, b: int) -> int:
+    return a + b
+
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+```
+
+3. Using Optional for Nullable Values
+NOTE: Since python 3.10 there is | (union) operator (ex: int | None)
+```
+from typing import Optional
+
+def get_length(s: Optional[str]) -> int:
+    if s is None:
+        return 0
+    return len(s)
+```
+
+4. Using List, Tuple, and Dict
+NOTE: Not preferred in with latest versions of Python, use built-in generic types instead (list[str], ...)
+because of perf. reasons
+```
+from typing import List, Tuple, Dict
+
+numbers: List[int] = [1, 2, 3, 4]
+coordinates: Tuple[float, float] = (10.5, 20.3)
+data: Dict[str, int] = {"age": 25, "score": 90}
+```
+
+Current State (Python 3.10+ Enhancements)
+------------------------------------------
+Python continues improving explicit typing:
+ * Python 3.9: Introduced built-in generic types (e.g., list[str] instead of List[str]).
+ * Python 3.10: Introduced the | (Union) operator for type hints (int | None instead of Optional[int]).
+ * Python 3.11: Introduced Self for better type hinting in class methods.
+ * Python 3.12: Improved type inference and performance optimizations.
+ * Explicit typing in Python is now widely adopted, especially in large projects, libraries,
+   and companies that require maintainability and scalability.

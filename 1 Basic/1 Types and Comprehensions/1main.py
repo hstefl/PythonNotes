@@ -1,5 +1,3 @@
-from typing import List, Tuple, Set, Dict, FrozenSet
-
 # Immutable types
 # ----------------
 i: int = 10 # unbounded - can grow as needed
@@ -63,7 +61,7 @@ b: bool = True
 # Nested Tuples              | Tuples can contain other tuples                           | t = (1, (2, 3), 4)
 # Comparison                 | Compare tuples element-wise                               | (1, 2) < (1, 3)
 # max(), min(), sum()        | Compute maximum, minimum, and sum for numerical tuples     | max(t), min(t), sum(t)
-t: Tuple[int, int, int, int] = (10, 11, 12, 13)
+t: tuple[int, int, int, int] = (10, 11, 12, 13)
 
 # Frozenset complexities
 #   Time
@@ -76,7 +74,7 @@ t: Tuple[int, int, int, int] = (10, 11, 12, 13)
 #   use them as keys in dictionaries or elements in other frozensets.
 # Implementation in Python
 #   Hashtable
-fs: FrozenSet[int] = frozenset([20, 21])
+fs: frozenset[int] = frozenset([20, 21])
 by: bytes = b'binary-data'
 
 # Mutable types
@@ -99,8 +97,8 @@ by: bytes = b'binary-data'
 #   appending, accessing elements by index, or modifying elements are frequent.
 # Implementation in Python
 #   Dynamic array
-l1: List[int] = [10, 11, 12]
-l2: List[int] = list((10, 20, 30)) # Tuple -> List
+l1: list[int] = [10, 11, 12]
+l2: list[int] = list((10, 20, 30)) # Tuple -> List
 
 # Dictionary complexities
 #   Time
@@ -113,7 +111,7 @@ l2: List[int] = list((10, 20, 30)) # Tuple -> List
 #   Scenarios where you need a quick lookpup, insertion and deletion of items.
 # Implementation in Python
 #   hash table
-d: Dict[str, int] = {"a": 1, "b": 2}
+d: dict[str, int] = {"a": 1, "b": 2}
 
 # Set complexities
 #   Time
@@ -125,7 +123,7 @@ d: Dict[str, int] = {"a": 1, "b": 2}
 #   fast average-time complexity for membership tests, insertions, deletions, and set operations.
 # Implementation in Python
 #   Hash table
-se: Set[int] = {10, 11, 12}
+se: set[int] = {10, 11, 12}
 
 
 def main() -> None:
