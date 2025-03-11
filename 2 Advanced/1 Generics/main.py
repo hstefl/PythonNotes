@@ -7,9 +7,9 @@ The ways/tools how to approach generics:
 
 Scenario	                            Best Choice	                Why?
 -------------------------------------------------------------------------------------------------
-General generics (functions/classes)	TypeVar (Python 3.5+) ✅	    Ensures type consistency
-Fluent interfaces (self return)	        Self (Python 3.11+) ✅	    Cleaner than TypeVar
-Multiple unknown-length generics	    TypeVarTuple (3.12+) ✅	    Handles variadic generics
+General generics (functions/classes)	TypeVar (Python 3.5+) ✅     Ensures type consistency
+Fluent interfaces (self return)	        Self (Python 3.11+) ✅       Cleaner than TypeVar
+Multiple unknown-length generics        TypeVarTuple (3.12+) ✅      Handles variadic generics
 Function wrappers (decorators)	        ParamSpec (3.10+) ✅	        Captures argument types properly
 Repeating complex types	                TypeAlias (3.10+) ✅	        Improves readability
 
