@@ -1,4 +1,7 @@
 # pip install requests
+#
+# sudo npm install -g json-server
+# json-server --watch cars.json
 
 import requests
 

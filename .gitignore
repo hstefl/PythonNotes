@@ -59,3 +59,9 @@ docker-compose.override.yml
 # MacOS & Linux system files
 .DS_Store
 *.swp
+
+.dmypy.json
+X Exercise/
+X Tmp/
+
+README

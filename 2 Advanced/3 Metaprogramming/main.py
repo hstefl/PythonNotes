@@ -17,7 +17,7 @@ To get the type of any object, make use of the type() function.
 
 metaclasses are used to create classes;
 classes are used to create objects;
-the type of the metaclass type is type – no, that is not a typo.
+the type of the metaclass type is type.
 
 type is a class that generates classes defined by a programmer;
 metaclasses are subclasses of the type class.

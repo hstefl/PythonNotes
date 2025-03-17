@@ -1,0 +1,65 @@
+What is REST? (Principles & Constraints)
+------------------------------------------
+REST (Representational State Transfer) is an architectural style for designing networked applications.
+It relies on stateless communication and uses standard HTTP methods for interaction.
+RESTful systems are scalable, simple, and flexible.
+
+Principles & Constraints of REST
+A RESTful system adheres to the following constraints:
+
+ * Client-Server Architecture: The client and server are separate entities, promoting separation of concerns.
+ * Statelessness: Each request from a client to a server must contain all the information needed to understand
+   and process it. No client context is stored on the server.
+ * Cacheability: Responses must define whether they are cacheable or not to improve performance.
+ * Uniform Interface: A consistent way of interacting with resources using standard HTTP methods:
+    GET: Retrieve a resource.
+    POST: Create a new resource.
+    PUT: Update/replace a resource.
+    PATCH: Partially update a resource.
+    DELETE: Remove a resource.
+ * Layered System: A client should not be able to tell whether it is connected to the end server or an intermediary
+   (e.g., load balancers, proxies).
+ * Code on Demand (optional): Servers can send executable code (e.g., JavaScript) to clients.
+
+
+REST vs. SOAP
+-------------
+REST and SOAP (Simple Object Access Protocol) are two common API communication protocols.
+
+Feature	        REST                            SOAP
+------------------------------------------------------------------
+Protocol        Uses HTTP                       Uses HTTP, SMTP, TCP
+Data Format     JSON, XML, YAML, HTML           XML only
+Performance     Faster and lightweight          Slower due to XML overhead
+Flexibility	    Highly flexible                 Strict message format
+Security        Relies on HTTPS, OAuth, JWT     WS-Security (more complex but robust)
+Use Case        Web and mobile applications     Enterprise applications, banking, and transactions requiring strict security
+
+
+RESTful APIs in Real-World Applications (Python Specific)
+----------------------------------------------------------
+FastAPI (High Performance)
+FastAPI is a modern, fast (as the name suggests) framework for building APIs with automatic OpenAPI documentation.
+
+Example: Simple FastAPI REST API
+```
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+```
+
+Use Cases of RESTful APIs in Python
+-----------------------------------
+Web Applications: Backend for web apps (e.g., authentication, data processing).
+Mobile Applications: APIs for mobile apps to interact with databases.
+IoT Devices: REST APIs allow IoT devices to communicate with cloud services.
+Machine Learning: Expose ML models as REST APIs using FastAPI or Flask.
+Microservices: REST is commonly used to build scalable microservices architectures.
