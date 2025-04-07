@@ -44,18 +44,18 @@ class Cat(Animal):
 # Step 3: Implement the Factory Class
 class AnimalFactory:
     @staticmethod
-    def get_animal(animal_type):
-        if animal_type.lower() == "dog":
+    def get_animal(animal_type: type):
+        if animal_type is Dog:
             return Dog()
-        elif animal_type.lower() == "cat":
+        elif animal_type is Cat:
             return Cat()
         else:
             raise ValueError("Unknown animal type")
 
 # Step 4: Usage
 if __name__ == "__main__":
-    animal = AnimalFactory.get_animal("dog")
+    animal = AnimalFactory.get_animal(Dog)
     print(animal.speak())  # Output: Woof!
 
-    animal = AnimalFactory.get_animal("cat")
+    animal = AnimalFactory.get_animal(Cat)
     print(animal.speak())  # Output: Meow!
