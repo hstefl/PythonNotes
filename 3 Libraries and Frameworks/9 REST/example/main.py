@@ -15,6 +15,7 @@ import os
 from typing import List
 
 import jwt
+from anyio import get_current_task
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.params import Security, Depends
@@ -114,17 +115,35 @@ class User(BaseModel):
 # In-memory database (list of users)
 users_db = [User(id=1, name="John Doe", email="john@doe.com"), User(id=2, name="Joana Doe", email="joana@doe.com")]
 
+
 @app.get("/")
 def read_root():
     return {"message": "Hello World!"}
 
 
 @app.get("/users", response_model=List[User])
-def read_root(current_app: dict = Depends(get_current_app)):
+def get_users(current_app: dict = Depends(get_current_app)):
     return users_db
+
+
+@app.get("/user/{user_id}", response_model=User)
+def get_user(user_id: int, current_app: dict = Depends(get_current_app)):
+    for user in users_db:
+        if user.id == user_id:
+            return user
+    raise HTTPException(status_code=404, detail=f"User not found ")
+
+
+@app.post("/users", response_model=User)
+def create_user(new_user: User, current_app: dict = Depends(get_current_app)):
+    for user in users_db:
+        if user.id == new_user.id:
+            raise HTTPException(status_code=400, detail="Users exists already")
+    users_db.append(new_user)
+    return new_user
 
 
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
