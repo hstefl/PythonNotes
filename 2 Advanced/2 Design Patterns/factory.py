@@ -44,7 +44,7 @@ class Cat(Animal):
 # Step 3: Implement the Factory Class
 class AnimalFactory:
     @staticmethod
-    def get_animal(animal_type: type):
+    def get_animal(animal_type: type[Animal]):
         if animal_type is Dog:
             return Dog()
         elif animal_type is Cat:
