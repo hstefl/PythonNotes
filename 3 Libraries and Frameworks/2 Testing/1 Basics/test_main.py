@@ -13,12 +13,12 @@ def sample_data():
     return {"a": "first", "b": "second", "c": "third"}
 
 
-def test_my_first(sample_data):
+def test_1(sample_data):
     assert sample_data["a"] == "first"
 
 
 @pytest.mark.parametrize("in_put,expected", [(1, 2), (2, 4), (3, 6)])
-def test_my_second(in_put, expected):
+def test_2(in_put, expected):
     assert in_put * 2 == expected  # This commend will be part of report when test fail
 
 
