@@ -75,6 +75,8 @@ t: tuple[int, int, int, int] = (10, 11, 12, 13)
 # Implementation in Python
 #   Hashtable
 fs: frozenset[int] = frozenset([20, 21])
+
+# Binary data
 by: bytes = b'binary-data'
 
 # Mutable types
