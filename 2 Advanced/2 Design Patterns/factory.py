@@ -54,8 +54,8 @@ class AnimalFactory:
 
 # Step 4: Usage
 if __name__ == "__main__":
-    animal = AnimalFactory.get_animal(Dog)
+    animal = AnimalFactory.get_animal(type(Dog()))
     print(animal.speak())  # Output: Woof!
 
-    animal = AnimalFactory.get_animal(Cat)
+    animal = AnimalFactory.get_animal(type(Cat()))
     print(animal.speak())  # Output: Meow!
