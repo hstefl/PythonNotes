@@ -83,15 +83,17 @@ by: bytes = b'binary-data'
 # List
 #   Collection which is ordered and mutable
 #   Time complexity
-#     accessing (l[x]): O(1)
-#     appending (l.append(value)): O(1)
-#     deleting (l.delete(value)): O(n)
-#       because of shifting all items after inserted item (new array is possible needed to create)
-#     deleting (l.delete(i)): O(1), we know the position
-#     insert (l.insert(value): O(n),
-#       because of shifting all items after inserted item (new array is possible needed to create)
-#     pop (l.pop()): O(1), no shifting is needed
-#     concatenation (l1 + l2): O(k), k is the size of l2, it creates new list and copied items there
+#     list[i] (indexing)	O(1)              Direct access by index is constant time.
+#     list.append(x)        O(1) (amortized)  Sometimes O(n) if list needs to resize, but usually constant.
+#     list.insert(i, x)     O(n)              Needs to shift elements right to make space.
+#     list.pop()            O(1)              Remove and return last element.
+#     list.pop(i)           O(n)              Removing from middle requires shifting elements.
+#     list.remove(x)        O(n)              Searches for x then removes it.
+#     list.index(x)         O(n)              Searches for x linearly.
+#     list.sort()           O(n log n)        Timsort algorithm, optimized for real-world data.
+#     list.reverse()        O(n)              Reverses the list in place.
+#     len(list)	            O(1)              Lists store their length internally.
+#     Iterating over a list	O(n)              Visit each element once.
 #   Space complexity
 #      O(n), n is number elements in a list
 # Usage

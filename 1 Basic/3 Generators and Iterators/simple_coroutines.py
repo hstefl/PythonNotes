@@ -4,6 +4,16 @@ Coroutines in Python are special functions that can pause and resume their execu
 They are like functions, but instead of return, they use yield or await.
 
 You can think of them as functions that remember where they left off.
+
+Use cases:
+ 1. Pipelines / Streams of Data (iltering, parsing, transforming, or aggregating data streams ...)
+ 2. Event-driven Programming (a state machine where coroutines respond to events (start, stop, error, etc.).
+ 3. Cooperative multitasking (If you want lightweight task switching —
+    coroutines can yield control back and forth without threads.)
+ 4. Decouple Producers and Consumers (The producer can send data to the consumer coroutine
+    without worrying about how it's processed.)
+ 5. Customized Control Flows (You can create fancy iteration patterns or advanced generators where
+    you feed in values dynamically, pause, checkpoint, retry, etc.)
 """
 
 """
