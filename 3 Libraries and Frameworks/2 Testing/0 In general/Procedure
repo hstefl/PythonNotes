@@ -1,0 +1,100 @@
+1. Visual Scan:
+  Layout Consistency: Check if the layout is consistent across different sections.
+  Navigation: Ensure that menus and links are intuitive and easy to find.
+  Content Clarity: Look for clear headings, readable fonts, and appropriate use of colors.
+
+2. Accessibility Check:
+  Alt Text: Verify that images have descriptive alt text.
+  Keyboard Navigation: Test if all interactive elements are accessible via keyboard.
+  Color Contrast: Use tools like WebAIM's Contrast Checker [1] to assess text readability.
+
+3. Functional Testing:
+  Forms: Submit forms with valid and invalid data to see how the system responds.
+  Links and Buttons: Click on all interactive elements to ensure they work as expected.
+
+4. Performance Evaluation:
+  Load Time: Use browser developer tools to check page load times.
+  Resource Optimization: Look for large images or scripts that could be optimized.
+
+5. Responsive Design:
+  Device Simulation: Resize the browser window or use device simulation tools to test responsiveness.
+  Touch Targets: On mobile views, ensure buttons and links are appropriately sized for touch interaction.
+
+6. Security aspects
+  HTTPS SSL/TLS
+    HTTPS with a valid TLS certificate,
+    ensure only strong protocols like TLS 1.2 and 1.3 are enabled,
+    and confirm the presence of HSTS and OCSP stapling.
+    use SSL Labs to verify cipher strength and see if deprecated protocols are still active.
+  Input Field Vulnerabilities
+    Injecting script tags and SQL payloads into user inputs like forms, URLs, and headers to see
+    if the app reflects or executes them. Monitor for unexpected behavior, pop-ups, or error messages.
+    For deeper testing, I'd use tools like Burp Suite (intercept and manipulate requests) or
+    OWASP ZAP (free scanner for common web app vulnerabilities), and also look at how the server
+    handles validation—ideally using server-side sanitization and prepared statements.
+  Authentication & Authorization
+    If the site has login/logout:
+    Test session management – Are sessions terminated on logout?
+    Try direct access to protected pages (via URL) without logging in.
+    Check for "Remember me" issues or improperly secured cookies.
+  Cookies and Local Storage
+    In DevTools → Application tab:
+    Are cookies set as HttpOnly (to prevent JS/* to manipulate w/ cookies - to prevent XSS) and Secure (Cookies sent only over HTTPs)?
+    Is JWT or sensitive data exposed in localStorage or sessionStorage?
+      Storing JWTs or sensitive data in localStorage or sessionStorage is not recommended in many cases because:
+        Risk	                Why It’s a Problem
+        --------------------------------------------------------------------------------------------------------------
+        ❌ XSS Vulnerability	    JavaScript has full access to both storages. If XSS is possible, attacker can steal tokens.
+        ❌ No Expiry Handling	localStorage values persist even after the browser is closed.
+        ❌ No Secure Flag	    Unlike cookies, storage data isn’t protected by Secure or HttpOnly flags.
+        ❌ Manual Management	    You must manually handle token expiration and refresh logic.
+
+
+
+Tooling
+======
+Unit Testing
+------------
+Focuses on testing individual components in isolation.
+ * test, unittest, mock, tox
+
+Integration Testing
+-------------------
+Tests interactions between services or between components within a service.
+ * Postman / Newman – API testing and automation
+ * pytest + requests / httpx – for HTTP integration testing
+ * Testcontainers – for spinning up real service dependencies (like databases, Kafka, etc.) in Docker containers
+ * WireMock – mocking external APIs (paid or limited)
+
+Contract Testing
+----------------
+Ensures that services agree on the API's request/response format.
+    [Consumer Test] ───> pact.json ───> [Provider Verification]
+          ✅                        📄                         ✅
+    "Here’s what I expect"         Contract         "Can I deliver that?"
+optionally: Broker - stores all generated pact.json and all provides can test against them during CI
+Tools: Pact
+
+End-to-End (E2E) Testing
+------------------------
+Simulates user flows across multiple services and components.
+ * Cypress – for frontend + backend E2E tests
+ * Selenium – for browser-based E2E testing
+ * Playwright – modern alternative to Selenium with better DX
+ * Robot Framework – keyword-driven testing
+
+Load & Performance Testing
+-------------------------
+Ensures services can handle expected loads and identify bottlenecks.
+ * Locust - Simulate traffic to a web application or API so you can measure performance, identify bottlenecks, and test scalability.
+
+Observability & Monitoring
+--------------------------
+Not strictly testing tools, but essential for validating behavior in production.
+Prometheus + Grafana – monitoring & alerting
+Jaeger / Zipkin – distributed tracing
+ELK Stack (Elasticsearch, Logstash, Kibana) – log analysis
+
+
+
+[1] https://wave.webaim.org/

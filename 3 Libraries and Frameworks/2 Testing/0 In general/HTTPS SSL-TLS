@@ -1,0 +1,45 @@
+HTTPS (Hypertext Transfer Protocol Secure):
+  It's HTTP over SSL/TLS.
+  Encrypts all data exchanged between the browser and the server.
+  Protects against eavesdropping, tampering, and man-in-the-middle (MITM) attacks.
+    Eavesdropping
+      Unauthorized party secretly listens to or intercepts private communications, such as data transmissions,
+      phone calls, or messages, without the knowledge or consent of the involved parties
+    Tampering
+      Type of attack intentionally alters or manipulates data, systems, or communications to cause harm,
+      gain advantage, or mislead others.
+    Man-in-the-middle
+
+Key Criteria for a Secure HTTPS/SSL/TLS Setup
+ 1. Valid SSL/TLS Certificate
+   Issued by a trusted Certificate Authority (CA).
+   Not expired or self-signed (unless explicitly needed).
+   Matches the domain (common name/SAN check).
+
+ 2. Strong TLS Protocol
+   Only TLS 1.2 or 1.3 should be enabled.
+   Disable SSL 2.0, 3.0, TLS 1.0, and TLS 1.1, which are vulnerable.
+
+ 3. Secure Cipher Suites
+   Use modern cipher suites that support Perfect Forward Secrecy (PFS), like:
+     ECDHE-ECDSA-AES128-GCM-SHA256
+     ECDHE-RSA-AES128-GCM-SHA256
+
+ 4. HSTS (HTTP Strict Transport Security)
+   Enforces HTTPS-only traffic.
+   Prevents downgrade attacks (e.g., forcing to HTTP).
+   Sent via response header:
+     Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+ 5. Certificate Transparency
+   Signed certificates are logged in public CT logs.
+   Helps detect fraudulent certificates.
+
+ 6. OCSP Stapling
+   Improves performance and privacy of certificate revocation checking.
+   Server sends OCSP response with the certificate to prove it hasn't been revoked.
+
+
+ Online scanners:
+  * https://www.ssllabs.com/ssltest/
+  * https://securityheaders.com/
